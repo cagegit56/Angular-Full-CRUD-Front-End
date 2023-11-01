@@ -7,12 +7,17 @@ import { ListComponent } from './employee/list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddeditComponent } from './employee/addedit.component';
+import { WelcomeComponent } from './welcome/welcome.component';
+import { RegistrationComponent } from './registration/registration.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ListComponent,
-    AddeditComponent
+    AddeditComponent,
+    WelcomeComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
