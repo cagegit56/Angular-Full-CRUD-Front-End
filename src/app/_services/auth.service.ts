@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  authenticated: any;
   static isUserLoggedIn() {
     throw new Error('Method not implemented.');
   }
@@ -34,12 +35,19 @@ login(user : User): Observable<string>{
 
   
 
+  
+
 }
 
 isUserLoggedIn(): boolean {
   return this.isloggedIn;
 }
 
+
+
+  loggedIn() {
+    return !!localStorage.getItem('userToken');
+  }
 
 
 
