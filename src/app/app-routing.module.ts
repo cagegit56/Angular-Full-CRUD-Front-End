@@ -5,7 +5,7 @@ import { AddeditComponent } from './employee/addedit.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { ReguserComponent } from './reguser/reguser.component';
 import { authGuard } from './Auth/auth.guard';
-import { AuthGuard } from './Auth/athsguard';
+
 
 
 const routes: Routes = [

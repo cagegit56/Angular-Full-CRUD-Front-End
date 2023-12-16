@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmpService } from '../_services/emp.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-addedit',
@@ -21,7 +22,8 @@ export class AddeditComponent {
     private formBuilder: FormBuilder,
     private empService: EmpService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -64,6 +66,7 @@ export class AddeditComponent {
       this.empService.update(this.formadd.value)
         .subscribe(
           data => {
+            this.toastr.success('Successfully Updated');
             this.btnCancel();
           })
     }
@@ -71,6 +74,7 @@ export class AddeditComponent {
       this.empService.create(this.formadd.value)
         .subscribe(
           data => {
+            this.toastr.success('Successfully Added');
             this.btnCancel();
           });
     }

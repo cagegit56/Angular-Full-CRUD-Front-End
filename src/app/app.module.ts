@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,8 +11,7 @@ import { AddeditComponent } from './employee/addedit.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { AuthInterceptor } from './_services/auth.interceptor';
 import { ReguserComponent } from './reguser/reguser.component';
-import { authGuard } from './Auth/auth.guard';
-import { AuthService } from './_services/auth.service';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -27,12 +27,16 @@ import { AuthService } from './_services/auth.service';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
+
+   
   ],
-  providers: [{
+  providers: [ {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
-    multi: true
+    multi: true,
   }],
   bootstrap: [AppComponent]
 })

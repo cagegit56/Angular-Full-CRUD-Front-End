@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { User } from '../_models/user';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-reguser',
@@ -21,7 +22,7 @@ Password: any;
 Email: any;
 user= new User();
 
-  constructor(private fg : FormBuilder, private auth : AuthService, private router: Router){}
+  constructor(private fg : FormBuilder, private auth : AuthService, private router: Router ,private toastr: ToastrService){}
 
 
   ngOnInit(): void{
@@ -47,7 +48,7 @@ user= new User();
 
     this.auth.signUp(this.RegForm.value).subscribe((data: any)=> {
       if(data.succeeded == true)
-        alert("Successfully Registered");
+      this.toastr.success('Successfully Registered');
         this.router.navigate(['/welcome']);
     
     },err=>{

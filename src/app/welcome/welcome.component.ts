@@ -4,6 +4,7 @@ import { AuthService } from '../_services/auth.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { User } from '../_models/user';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-welcome',
@@ -20,7 +21,7 @@ UserName: any;
 Password: any;
 user= new User();
 
-constructor( private fg : FormBuilder, private auth : AuthService, private router: Router){}
+constructor( private fg : FormBuilder, private auth : AuthService, private router: Router, private toastr: ToastrService){}
  
 ngOnInit(): void{
   this.LgForm = this.fg.group({
@@ -41,12 +42,12 @@ get f() { return this.LgForm.controls; }
     }else{
 
     this.loading = true;
-    
+    // this.toastr.success('Successful');
 
 
     this.auth.login(this.LgForm.value).subscribe((token : string) => {
       localStorage.setItem('authToken', token);
-      alert("Successfully Logged In");
+      this.toastr.success('Successful');
       console.log(this.LgForm.value);
       this.router.navigate(['/list']);
       
