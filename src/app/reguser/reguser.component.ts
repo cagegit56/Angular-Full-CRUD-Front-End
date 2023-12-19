@@ -21,6 +21,7 @@ UserName: any;
 Password: any;
 Email: any;
 user= new User();
+emailPattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
 
   constructor(private fg : FormBuilder, private auth : AuthService, private router: Router ,private toastr: ToastrService){}
 
@@ -30,7 +31,8 @@ user= new User();
      
       UserName: ['', Validators.required],
        Email: ['', Validators.required],
-      Password: ['', Validators.required],
+      Password: ['', Validators.required, Validators.minLength(8),
+      Validators.maxLength(40), Validators.pattern('^((?!.*[s])(?=.*[A-Z])(?=.*d).{8,99})') ],
       
     });
   
